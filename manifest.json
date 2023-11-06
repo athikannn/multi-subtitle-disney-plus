@@ -1,0 +1,36 @@
+{
+  "name": "Multi Subtitle Disney+ Extension",
+  "description": "Fully functional, useful bare minimum Google Chrome extension boilerplate [Manifest V3].",
+  "homepage_url": "https://github.com/athikannn/multi-subtitle-disney-plus",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "execute.js will run (watch the Chrome DevTools' console)"
+  },
+  "content_scripts": [
+    {
+      "run_at" : "document_start",
+      "js": ["before.js"],
+      "matches": [
+        "https://*.hotstar.com/*"
+      ]
+    },
+    {
+      "run_at" : "document_idle",
+      "js": ["after.js"],
+      "matches": [
+        "https://*.hotstar.com/*"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.hotstar.com/*"
+  ]
+}
